@@ -1,0 +1,32 @@
+
+
+
+#def siev (listOP, guess):
+
+
+def Bullseye(option, guess):
+    countB = 0
+    for i in xrange(4):
+        if option&15 == guess&15:
+            countB += 1
+            print "11111 ", "option-", option, "guess-", guess, guess*option
+        else:
+            print "22222 ", "option-", option, "guess-", guess, guess*option
+        option >>= 4
+        guess >>= 4
+    return countB
+
+
+def Hits(option, guess):# incorrect way!!!!!
+    countH = 0
+    for i in xrange(4):
+        for j in xrange(4):
+            if (option >> (4*j) ) & 15 == (guess >> (4*i) ) & 15:
+                countH += 1
+                print "33333 ", (option >> (4*j) ) & 15, "A", (guess >> (option*i) ) & 15
+            else:
+                print "44444 ", (option >> (4*j) ) & 15, "A", (guess >> (option*i) ) & 15
+    return countH
+guess1 = 1253
+option1 = 1235
+print "H-", Hits(option1, guess1),"B - ", Bullseye(option1, guess1), "end"
